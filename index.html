@@ -1433,29 +1433,36 @@ function formatInline(str) {
 
       // 持久化存储 (兼容官方规范返回值 { value: string | null })
       async saveHistory(key, data) {
+        const serialized = JSON.stringify(data);
+        // 双轨持久化：优先写入 Cherry 持久化存储
         try {
-          if (window.cherry && window.cherry.storage && window.cherry.storage.set) {
-            await window.cherry.storage.set(key, JSON.stringify(data));
-          } else {
-            localStorage.setItem(key, JSON.stringify(data));
+          if (window.cherry?.storage?.set) {
+            await window.cherry.storage.set(key, serialized);
           }
         } catch (e) {
-          console.warn("Save history failed:", e);
+          console.warn("Cherry.storage.set failed:", e);
         }
+        // 同步写入 localStorage 兜底
+        try {
+          localStorage.setItem(key, serialized);
+        } catch (e) {}
       },
 
       async getHistory(key) {
+        // 双轨容错读取：优先从 Cherry 读，读不到自动回退 localStorage
         try {
-          if (window.cherry && window.cherry.storage && window.cherry.storage.get) {
+          if (window.cherry?.storage?.get) {
             const res = await window.cherry.storage.get(key);
             const val = (res && typeof res === "object" && "value" in res) ? res.value : res;
-            return val ? JSON.parse(val) : null;
-          } else {
-            const val = localStorage.getItem(key);
-            return val ? JSON.parse(val) : null;
+            if (val) return JSON.parse(val);
           }
         } catch (e) {
-          console.warn("Get history failed:", e);
+          console.warn("Cherry.storage.get failed:", e);
+        }
+        try {
+          const val = localStorage.getItem(key);
+          return val ? JSON.parse(val) : null;
+        } catch (e) {
           return null;
         }
       },
@@ -1718,8 +1725,8 @@ function formatInline(str) {
         if (progressText) progressText.textContent = "🎉 智囊团全员推演完成！综合裁决大盘已就绪。";
         clearInterval(meetingTimerId);
 
-        // 自动保存至本地历史档案
-        saveCurrentToHistory(currentResults);
+        // 自动保存至本地历史档案（带 await 确保落盘）
+        await saveCurrentToHistory(currentResults);
         CherryBridge.notify("达达智囊团", "决策大盘推演完成，请查阅五路共识与行动决断！");
 
       } catch (err) {

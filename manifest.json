@@ -4,7 +4,7 @@
     "zh": "达达智囊团",
     "en": "Dada Brain Trust"
   },
-  "version": "1.1.0",
+  "version": "1.0.3",
   "description": {
     "zh": "多维大师决策推演工作台。集合曾国藩、德波诺、芒格、范蠡、塞涅卡五路大师视角，提供圆桌推演流水线、动态推演耗时反馈、随时中断掌控、共识与分歧大盘分析、本地决策档案库等功能。",
     "en": "Multi-perspective decision deduction workbench with Zeng Guofan, Edward de Bono, Charlie Munger, Fan Li, and Seneca."
@@ -21,16 +21,16 @@
     "notification.show"
   ],
   "releaseNotes": {
-    "zh": "v1.1.0 视觉与推演体验重大升级：视觉全面提升（流光玻璃卡片、专业标签体质、全屏沉浸圆桌），新增动态推演进度仪表盘与秒级跑秒计时，新增一键随时中断掌控机制，增强 Markdown 表格与任务清单渲染，彻底杜绝黑盒盲等与白屏问题。",
-    "en": "v1.1.0 UI & UX Upgrade: visual overhaul with glassmorphism, dynamic deduction pipeline with live timer, cancel control, and enhanced Markdown table rendering."
+    "zh": "v1.0.3: 升级 Cherry.storage 持久化双轨容错存储与异步落盘保障，彻底解决历史决策沉淀丢失问题。",
+    "en": "v1.0.3: Upgraded Cherry.storage dual-track persistence to ensure reliable decision archives."
   },
   "update": {
     "url": "https://duzhilei951.github.io/dada-brain-trust/manifest.json?v=1.1.0"
   },
   "package": {
-    "url": "https://duzhilei951.github.io/dada-brain-trust/releases/1.1.0/dada-brain-trust.miniapp",
+    "url": "https://duzhilei951.github.io/dada-brain-trust/releases/1.0.3/dada-brain-trust.miniapp",
     "iconUrl": "https://duzhilei951.github.io/dada-brain-trust/icon.png",
-    "sha256": "574cfcffc8fdd78ab19061b849c7134ea55e76dfc161d29c19d1ed4036a9ec05",
-    "size": 24571
+    "sha256": "d5880a64d6b501e25bde7269ae1bad1f69f1994d8f1f8948e527f62b0c68d31f",
+    "size": 23771
   }
 }
