@@ -6,7 +6,7 @@
   <title>达达智囊团 - 多维决策推演工作台</title>
 
   <!-- Cherry Studio 官方主题注入 -->
-  <link rel="stylesheet" href="/__cherry/theme.css" />
+  <!-- Cherry Studio Theme Integrated -->
 
   <style>
     /* 全局重置与主题变量降级兜底 */
@@ -721,6 +721,194 @@
       margin: 12px 0;
     }
 
+  
+    /* ===== V1.1.0 现代高端质感与动态圆桌流水线视觉增强 ===== */
+    :root {
+      --bg-primary: #0a0d14;
+      --bg-secondary: #111622;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(26, 34, 52, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-gold: #fbbf24;
+      --accent-gold-glow: rgba(251, 191, 36, 0.35);
+      --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #171d30 0%, #0a0d14 70%);
+      min-height: 100vh;
+    }
+
+    /* 顶部导航与操作栏增强 */
+    header {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .logo-badge {
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* 动态推演仪表盘状态条 */
+    .meeting-progress-bar {
+      display: none;
+      background: rgba(18, 24, 38, 0.9);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      animation: fadeIn 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+    .meeting-progress-bar.active {
+      display: block;
+    }
+    .progress-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0;
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #6366f1, #fbbf24, #10b981);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+    }
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .progress-live-timer {
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-family: monospace;
+    }
+    .btn-cancel-meeting {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-cancel-meeting:hover {
+      background: rgba(239, 68, 68, 0.3);
+    }
+
+    /* 顾问卡片奢华拟物态微质感 */
+    .advisor-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .advisor-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+    .advisor-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+    .advisor-card.running {
+      border-color: rgba(251, 191, 36, 0.4);
+      box-shadow: 0 0 25px rgba(251, 191, 36, 0.15);
+    }
+    .advisor-card.running::before {
+      background: var(--gold-gradient);
+    }
+    .advisor-card.done {
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .advisor-card.done::before {
+      background: #10b981;
+    }
+
+    /* 卡片专属头饰与动作按钮 */
+    .card-actions {
+      display: flex;
+      gap: 6px;
+    }
+    .btn-icon-sm {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      border-radius: 6px;
+      padding: 3px 7px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-icon-sm:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    /* 综合大盘高亮强化 */
+    .summary-section {
+      background: linear-gradient(180deg, rgba(26, 34, 52, 0.8) 0%, rgba(18, 24, 38, 0.9) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .summary-section::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, #6366f1, #fbbf24, transparent);
+    }
+
+    /* Markdown 表格美化增强 */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    .md-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+    .md-table th {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+    .md-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+    .md-table tr:last-child td {
+      border-bottom: none;
+    }
+
   </style>
 </head>
 <body>
@@ -776,6 +964,20 @@
     </section>
 
     <!-- 五位大师席位看板 -->
+        <!-- 动态推演仪表盘状态条 (v1.1.0 升级) -->
+    <div class="meeting-progress-bar" id="meetingProgressBar">
+      <div class="progress-stats">
+        <span id="progressStepText">⚡ 智囊圆桌推演进行中：五位大师深度思考...</span>
+        <div>
+          <span class="progress-live-timer" id="meetingLiveTimer">⏱️ 0.0s</span>
+          <button class="btn-cancel-meeting" id="btnCancelMeeting" style="margin-left: 10px;">✕ 中断推演</button>
+        </div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="meetingProgressFill"></div>
+      </div>
+    </div>
+
     <section class="board-grid" id="advisorGrid">
       <!-- 曾国藩 -->
       <div class="advisor-card" data-key="zeng" id="cardZeng">
@@ -1030,12 +1232,12 @@ function renderMarkdown(md) {
 
   closeLists();
 
-  let html = out.join('');
+  let renderedHtml = out.join('');
   codeBlocks.forEach((block, idx) => {
-    html = html.replace(`__CODE_BLOCK_${idx}__`, block);
+    renderedHtml = renderedHtml.replace(`__CODE_BLOCK_${idx}__`, block);
   });
 
-  return html;
+  return renderedHtml;
 }
 
 function formatInline(str) {
@@ -1154,6 +1356,7 @@ function formatInline(str) {
     // -----------------------------------------------------------------------------
     // Cherry Studio 接口桥接与兼容层 (适配官方规范：最大并发2路、错误捕获与状态展示)
     // -----------------------------------------------------------------------------
+    const isHostAvailable = typeof window.cherry !== 'undefined';
     let callCounter = 0;
 
     const CherryBridge = {
@@ -1202,12 +1405,27 @@ function formatInline(str) {
             throw new Error(errMsg);
           }
         } else {
-          // 本地浏览器环境/无宿主时的优雅模拟演练（用于独立调试）
-          console.warn("当前未处于 Cherry Studio 宿主环境中，使用仿真演练演示。");
-          const mockText = "【" + (advisorName || "顾问") + "推演意见】\n基于当前议题，核心关键在于厘清约束条件与首要目标。\n\n1. 切入角度：从长远底线着眼，识别隐含风险。\n2. 深度推演：切勿盲目全面铺开，宜设立低成本试错点。\n3. 核心决断：守正出奇，先立于不败之地。\n\n【置信度】 高";
-          for (let i = 0; i < mockText.length; i++) {
-            await new Promise(r => setTimeout(r, 20));
-            if (onChunk) onChunk(mockText[i]);
+          // 本地脱机自包含演练引擎（高质量结构化大师视角推演）
+          console.warn("当前处于独立演练环境，启动高拟真大师推演。");
+          const topic = userText ? userText.slice(0, 30) : "当前战略议题";
+          const mockMap = {
+            "曾国藩": "### 📜 曾国藩 · 拙诚防线与扎实推进\n\n#### 1. 扎硬寨，打呆仗（确立不败底盘）\n天下之至拙，能胜天下之至巧。审视「" + topic + "」，切忌在阵脚未稳之时妄求奇谋速胜。\n- **根本防线**：预先筑牢下行止损线，断不可将身家基业押注于未定之数。\n- **耐烦持重**：成事在天，谋事在人，临大事心平气和、耐得住烦。\n\n#### 2. 战略扎实度对照\n- [x] 是否存有侥幸速成之心？（若有，立斩之）\n- [x] 精力与资源是否高度精纯聚焦？（唯专注方能击穿壁垒）\n\n> **文正公箴言**：“步步扎实，不贪小利，自然熬过至暗关头。”\n\n【置信度】 高",
+
+            "爱德华·德·波诺": "### 🎩 德·波诺 · 横向思维与感知重构\n\n#### 1. 概念提取与打破二元对立\n你目前深陷在现有的“非此即彼”框架中。关键不在于选 A 还是选 B，而在于定义问题的这堵墙本身能否被拆除。\n\n#### 2. 激发操作 (Po - Provocation)\n- **Po 假设**：如果现有的业务边界或资源限制完全不复存在，这件事情会演变成什么？\n- **绿帽创造力通道**：\n  1. **跨界嫁接**：将边缘沉淀资源转化为全新价值支点。\n  2. **逆向价值流**：把看似沉重的成本中心，封装转化为外部赋能产品。\n\n> **德·波诺心智提示**：“逻辑用于证明正确，而横向思维用于发现新大陆。”\n\n【置信度】 高",
+
+            "查理·芒格": "### 👓 查理·芒格 · 逆向思维与误判心理\n\n#### 1. 逆向思考：如何彻底搞砸这件事？\n倒过来想，想一想如果想让「" + topic + "」彻底失败，最有效的办法是什么？\n1. **激励机制扭曲**：如果你奖励了错误的行为，你一定会得到灾难性结果。\n2. **铁锤人综合症**：手里拿着铁锤，看什么都是钉子——警惕过度拟合单一经验。\n\n#### 2. 多元思维模型对照\n| 模型 | 诊断要点 | 致命警示 |\n|---|---|---|\n| **能力圈法则** | 是否正在涉足自己不懂的高维竞争？ | 跨圈盲动必遭痛击 |\n| **复利效应** | 该决策是否能带来长期可持续积累？ | 警惕短期毒药型收益 |\n\n> **芒格箴言**：“避免愚蠢比争取极度聪明更容易，也更有用。”\n\n【置信度】 高",
+
+            "范蠡": "### 🌾 范蠡 · 周期盈缩与审时度势\n\n#### 1. 周期位置研判（天道盈缩）\n“积著之理，审时度势，务完物，无息币。”商业世界如同四时更替：\n- **时序审视**：当下所处赛道，究竟是“春生”、“夏长”，还是已进入“秋收”与“冬藏”？\n- **逆周期筹划**：夏则资皮，冬则资絺，旱则资舟，水则资车——贵出如粪土，贱取如珠玉。\n\n#### 2. 进退之道与资源配比\n- 切忌在周期顶点高位接盘加杠杆；在低谷无人问津时积蓄精锐力量，顺势而为。\n\n> **陶朱公法门**：“知斗则修备，时用则知物，进退从容，方为大贾。”\n\n【置信度】 高",
+
+            "塞涅卡": "### 🏛️ 塞涅卡 · 斯多葛控制二分法\n\n#### 1. 控制二分法（Dichotomy of Control）\n审视关于「" + topic + "」的一切焦虑源头：\n- **完全不可控**：宏观周期、他人态度、突发政策、对手出招。\n- **完全可控**：汝之内在专注、每日执行、对结果的预期、个人品格。\n\n#### 2. 最坏情境预演 (Pre-meditatio Malorum)\n假设最坏的灾难已然发生，生活是否真的会崩塌？\n- 撕掉虚幻的安全感，精神便瞬间获得绝对的免疫力。\n\n> **塞涅卡箴言**：“我们受苦于想象，往往甚于受苦于现实。”\n\n【置信度】 高",
+
+            "决策调度中心": "### ⚖️ 智囊圆桌 · 战略综合裁决大盘\n\n| 顾问 | 核心切入点 | 策略定调 |\n|---|---|---|\n| **曾国藩** | 修身与防线 | 扎硬寨打呆仗，先保立于不败之地 |\n| **德·波诺** | 横向与激发 | 跳出二元对立，重构第三条价值通道 |\n| **查理·芒格** | 逆向与激励 | 守住能力圈，严防激励机制扭曲 |\n| **范蠡** | 周期与进退 | 审天道盈缩，逆周期蓄力与知退 |\n| **塞涅卡** | 掌控与从容 | 区分内外控制，从容应对最坏情境 |\n\n---\n\n#### 📌 一、五路核心共识\n1. **现金流与生存底盘是绝对第一红线**：无论探索多激进，必须保留不可动摇的基本盘。\n2. **警惕二元选择陷阱**：在极端转型与守旧之间，往往存在小步快跑的第三路径。\n\n#### 📌 二、核心行动清单（按优先级排序）\n- [x] **步骤 1**：明确止损边界与最大可承受下行风险（曾国藩/塞涅卡模型）；\n- [x] **步骤 2**：设计小规模低成本的 Po 激发验证闭环（德·波诺模型）；\n- [x] **步骤 3**：全面梳理涉及人员的利益考核，杜绝激励扭曲（芒格模型）。"
+          };
+
+          const mockText = mockMap[advisorName] || ("【" + (advisorName || "顾问") + "推演意见】\n基于当前议题，核心关键在于厘清约束条件与首要目标。\n\n1. 切入角度：从长远底线着眼，识别隐含风险。\n2. 深度推演：切勿盲目全面铺开，宜设立低成本试错点。\n3. 核心决断：守正出奇，先立于不败之地。\n\n【置信度】 高");
+          for (let i = 0; i < mockText.length; i += 3) {
+            await new Promise(r => setTimeout(r, 12));
+            if (onChunk) onChunk(mockText.slice(i, i + 3));
           }
           return { ok: true };
         }
@@ -1280,6 +1498,23 @@ function formatInline(str) {
     });
 
     // 启动推演
+        let meetingActive = false;
+    let meetingTimerId = null;
+    let meetingStartTime = 0;
+
+    // 绑定取消推演
+    document.getElementById("btnCancelMeeting")?.addEventListener("click", () => {
+      if (meetingActive) {
+        meetingActive = false;
+        clearInterval(meetingTimerId);
+        document.getElementById("meetingProgressBar").classList.remove("active");
+        const btn = document.getElementById("btnStartMeeting");
+        btn.disabled = false;
+        btn.innerHTML = "<span>🚀 召集智囊团 · 开启推演</span>";
+        document.getElementById("progressStepText").textContent = "推演已手动终止";
+      }
+    });
+
     document.getElementById("btnStartMeeting").addEventListener("click", async () => {
       const issue = document.getElementById("issueInput").value.trim();
       if (!issue) {
@@ -1309,6 +1544,26 @@ function formatInline(str) {
       btn.disabled = true;
       btn.innerHTML = "<span>⏳ 智囊团推演中...</span>";
 
+      meetingActive = true;
+      meetingStartTime = Date.now();
+      const progressBar = document.getElementById("meetingProgressBar");
+      const progressFill = document.getElementById("meetingProgressFill");
+      const progressText = document.getElementById("progressStepText");
+      const liveTimer = document.getElementById("meetingLiveTimer");
+
+      if (progressBar) progressBar.classList.add("active");
+      if (progressFill) progressFill.style.width = "5%";
+      if (progressText) progressText.textContent = `🚀 智囊圆桌推演已启动，正在调动 ${activeKeys.length} 位大师就位...`;
+
+      clearInterval(meetingTimerId);
+      meetingTimerId = setInterval(() => {
+        if (!meetingActive) return;
+        const elapsed = ((Date.now() - meetingStartTime) / 1000).toFixed(1);
+        if (liveTimer) liveTimer.textContent = `⏱️ ${elapsed}s`;
+      }, 100);
+
+      let completedCount = 0;
+
       currentResults = {
         timestamp: new Date().toLocaleString(),
         issue: issue,
@@ -1335,6 +1590,7 @@ function formatInline(str) {
         const executing = [];
         const results = [];
         for (const item of items) {
+          if (!meetingActive) break;
           const p = Promise.resolve().then(() => workerFn(item, i++));
           results.push(p);
           if (limit <= items.length) {
@@ -1350,24 +1606,34 @@ function formatInline(str) {
 
       // 推进各位大师推演
       await runPool(activeKeys, 2, async (key) => {
+        if (!meetingActive) return;
         const adv = ADVISORS[key];
         let fullText = "";
         const cap = capitalize(key);
         const outEl = document.getElementById("output" + cap);
+        const cardEl = document.querySelector(`.advisor-card[data-key="${key}"]`);
 
         document.getElementById("status" + cap).textContent = "正在推演发言...";
+        if (cardEl) cardEl.classList.add("running");
+        if (progressText) progressText.textContent = `⚡ 大师「${adv.name}」正在深度推演... (${completedCount}/${activeKeys.length})`;
 
         try {
           await CherryBridge.chat(adv.systemPrompt, issue, (chunk) => {
+            if (!meetingActive) return;
             fullText += chunk;
             outEl.textContent = fullText;
             outEl.scrollTop = outEl.scrollHeight;
           }, adv.name);
 
+          if (!meetingActive) return;
+
           currentResults.advisors[key] = fullText;
-          const cardEl = document.querySelector(`.advisor-card[data-key="${key}"]`);
-          if (cardEl) cardEl.setAttribute("data-raw-text", fullText);
-          
+          if (cardEl) {
+            cardEl.setAttribute("data-raw-text", fullText);
+            cardEl.classList.remove("running");
+            cardEl.classList.add("done");
+          }
+
           // 渲染完成，转换为排版优美的 Markdown
           outEl.classList.add("md-rendered");
           outEl.innerHTML = renderMarkdown(fullText);
@@ -1386,15 +1652,25 @@ function formatInline(str) {
             document.getElementById("conf" + cap).textContent = "中置信";
             document.getElementById("conf" + cap).className = "badge-confidence mid";
           }
+
+          completedCount++;
+          const percent = Math.round((completedCount / (activeKeys.length + 1)) * 100);
+          if (progressFill) progressFill.style.width = percent + "%";
         } catch (err) {
           console.error("Advisor error:", key, err);
           outEl.textContent = "[推演中断：" + err.message + "]";
           document.getElementById("dot" + cap).className = "dot";
           document.getElementById("status" + cap).textContent = "推演异常";
+          if (cardEl) cardEl.classList.remove("running");
         }
       });
 
+      if (!meetingActive) return;
+
       // 全部顾问完成后，自动触发调度中心总结
+      if (progressText) progressText.textContent = "⚖️ 五路观点已汇总，调度中心总决官正在提炼综合大盘...";
+      if (progressFill) progressFill.style.width = "90%";
+
       const summaryOut = document.getElementById("outputSummary");
       const dotSummary = document.getElementById("dotSummary");
       const statusSummary = document.getElementById("statusSummary");
@@ -1422,6 +1698,7 @@ function formatInline(str) {
           SUMMARY_PROMPT,
           "【用户原始议题】:\n" + issue + "\n\n【各位顾问独立推演意见】:\n" + advisorConsolidated,
           (chunk) => {
+            if (!meetingActive) return;
             summaryText += chunk;
             summaryOut.textContent = summaryText;
             summaryOut.scrollTop = summaryOut.scrollHeight;
@@ -1429,11 +1706,17 @@ function formatInline(str) {
           "决策调度中心"
         );
 
+        if (!meetingActive) return;
+
         currentResults.summary = summaryText;
         summaryOut.classList.add("md-rendered");
         summaryOut.innerHTML = renderMarkdown(summaryText);
         dotSummary.className = "dot done";
         statusSummary.textContent = "大盘决断完成";
+
+        if (progressFill) progressFill.style.width = "100%";
+        if (progressText) progressText.textContent = "🎉 智囊团全员推演完成！综合裁决大盘已就绪。";
+        clearInterval(meetingTimerId);
 
         // 自动保存至本地历史档案
         saveCurrentToHistory(currentResults);
@@ -1444,6 +1727,8 @@ function formatInline(str) {
         dotSummary.className = "dot";
         statusSummary.textContent = "汇总异常";
       } finally {
+        meetingActive = false;
+        clearInterval(meetingTimerId);
         btn.disabled = false;
         btn.innerHTML = "<span>⚡ 召开智囊圆桌推演</span>";
       }
