@@ -4,7 +4,7 @@
     "zh": "达达智囊团",
     "en": "Dada Brain Trust"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": {
     "zh": "多维大师决策推演工作台。集合曾国藩、德波诺、芒格、范蠡、塞涅卡五路大师视角，提供圆桌推演流水线与共识分歧大盘分析；底部【穿透追问·深度研讨室】锚定五路推演持续对话，全程 Markdown 渲染。",
     "en": "Multi-expert decision workbench with five advisors, consensus analysis, and a Follow-Up Deep Inquiry Room anchored on the full deduction (Markdown rendered)."
@@ -21,16 +21,16 @@
     "notification.show"
   ],
   "releaseNotes": {
-    "zh": "v1.0.4: 新增【穿透追问·深度研讨室】——将议题、五路大师推演与综合大盘整体注入上下文，支持持续多轮追问并随档案持久化；同时重写 Markdown 渲染引擎，补齐表格、嵌套列表、任务清单、删除线与超链接。",
-    "en": "v1.0.4: Added a Follow-Up Deep Inquiry Room injecting the full deduction as dialogue context, plus a rebuilt Markdown engine (tables, nested lists, task lists, links)."
+    "zh": "v1.0.5: v1.0.5: 规范更新地址为无参数标准形式，确保客户端更新检查稳定生效。",
+    "en": "v1.0.5: Normalized the update URL to the canonical query-free form so client update checks resolve reliably."
   },
   "update": {
-    "url": "https://duzhilei951.github.io/dada-brain-trust/manifest.json?v=1.0.4"
+    "url": "https://duzhilei951.github.io/dada-brain-trust/manifest.json"
   },
   "package": {
-    "url": "https://duzhilei951.github.io/dada-brain-trust/releases/1.0.4/dada-brain-trust.miniapp",
+    "url": "https://duzhilei951.github.io/dada-brain-trust/releases/1.0.5/dada-brain-trust.miniapp",
     "iconUrl": "https://duzhilei951.github.io/dada-brain-trust/icon.png",
-    "sha256": "859deb0a6abb46f0a4384c26b110c51db22e50dd3c6598c53684982dbf370b0f",
-    "size": 30723
+    "sha256": "c55a2c51874ce0fc7788f551931a7793f257eafeae603f41577cfb74c3c86185",
+    "size": 30617
   }
 }
