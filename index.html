@@ -12,6 +12,7 @@
     /* 全局重置与主题变量降级兜底 */
     :root {
       --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       --bg-primary: var(--cherry-bg-base, #0f172a);
       --bg-secondary: var(--cherry-bg-surface, #1e293b);
       --bg-card: var(--cherry-bg-card, rgba(30, 41, 59, 0.7));
@@ -908,6 +909,242 @@
     .md-table tr:last-child td {
       border-bottom: none;
     }
+    .md-table tbody tr:hover td {
+      background: rgba(99, 102, 241, 0.08);
+    }
+    .md-rendered h5, .md-rendered h6 {
+      margin: 10px 0 5px 0;
+      color: var(--text-muted);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .md-rendered h5 { font-size: 13px; }
+    .md-rendered h6 { font-size: 12.5px; }
+    .md-rendered .table-wrap { margin: 10px 0; }
+    .md-rendered ul ul, .md-rendered ol ol,
+    .md-rendered ul ol, .md-rendered ol ul {
+      margin: 4px 0 4px 16px;
+    }
+    .md-link {
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--primary);
+    }
+    .md-link:hover { color: var(--accent-gold); border-bottom-color: var(--accent-gold); }
+    .md-del { color: var(--text-muted); text-decoration: line-through; }
+    .md-check { color: var(--success); font-weight: 700; margin-right: 4px; }
+
+    /* =====================================================================
+       穿透追问 · 深度研讨室（在五位大师推演之后，围绕议题持续追问）
+       ===================================================================== */
+    .inquiry-section {
+      margin-top: 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .inquiry-header {
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .inquiry-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .inquiry-title .pulse-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+    }
+    .inquiry-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      font-weight: 400;
+    }
+    .inquiry-body { padding: 18px; }
+    .inquiry-chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-height: 460px;
+      overflow-y: auto;
+      padding-right: 6px;
+      margin-bottom: 16px;
+    }
+    .inquiry-chat-list::-webkit-scrollbar { width: 5px; }
+    .inquiry-chat-list::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+    .inquiry-msg { display: flex; flex-direction: column; gap: 6px; }
+    .inquiry-msg.user { align-self: flex-end; max-width: 85%; }
+    .inquiry-msg.assistant { align-self: flex-start; max-width: 100%; width: 100%; }
+    .inquiry-bubble {
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+    .inquiry-msg.user .inquiry-bubble {
+      background: var(--primary-light);
+      border: 1px solid var(--primary);
+      color: var(--text-main);
+      border-top-right-radius: 2px;
+    }
+    .inquiry-msg.assistant .inquiry-bubble {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-top-left-radius: 2px;
+    }
+    .inquiry-bubble-header {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .inquiry-prompt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 13px;
+    }
+    .inquiry-chip {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .inquiry-chip:hover {
+      background: var(--primary-light);
+      color: var(--text-main);
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .inquiry-input-box {
+      display: flex;
+      gap: 10px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .inquiry-input-box:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary-light);
+    }
+    .inquiry-textarea {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 13.5px;
+      font-family: inherit;
+      resize: none;
+      min-height: 44px;
+      max-height: 140px;
+      line-height: 1.5;
+      outline: none;
+      padding: 11px 0;
+      box-sizing: border-box;
+    }
+    .inquiry-textarea::placeholder { color: var(--text-muted); opacity: 0.75; }
+    .inquiry-send-btn {
+      align-self: flex-end;
+      flex-shrink: 0;
+      padding: 11px 22px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13.5px;
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+    }
+    .inquiry-send-btn:hover:not(:disabled) {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 7px 22px rgba(99, 102, 241, 0.6);
+    }
+    .inquiry-send-btn:active:not(:disabled) { transform: scale(0.96); }
+    .inquiry-send-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+      box-shadow: none;
+      transform: none;
+    }
+    .inquiry-input-hint {
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      text-align: right;
+      user-select: none;
+    }
+    .inquiry-input-hint kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      margin: 0 2px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary);
+    }
+    .inquiry-empty {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      padding: 18px 0;
+    }
+    .inquiry-typing {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+      padding: 4px 2px;
+    }
+    .inquiry-typing i {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: inquiryTyping 1.2s infinite ease-in-out;
+    }
+    .inquiry-typing i:nth-child(2) { animation-delay: 0.2s; }
+    .inquiry-typing i:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes inquiryTyping {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1.1); opacity: 1; }
+    }
 
   </style>
 </head>
@@ -1099,6 +1336,37 @@
 4. 【行动清单】：综合优先级最高的落地执行步骤。
       </div>
     </section>
+
+    <!-- 穿透追问 · 深度研讨室 -->
+    <section class="inquiry-section" id="inquirySection">
+      <div class="inquiry-header">
+        <div class="inquiry-title">
+          <span class="pulse-dot"></span>
+          <span>💬 穿透追问 · 深度研讨室</span>
+          <span class="inquiry-badge">已锚定上方五路推演与综合大盘</span>
+        </div>
+        <button class="btn-secondary" id="btnClearInquiry" style="padding:4px 10px;font-size:12px;" title="清空当前追问记录">🧹 清空追问</button>
+      </div>
+      <div class="inquiry-body">
+        <div class="inquiry-prompt-chips" id="inquiryChips">
+          <div class="inquiry-chip" data-query="综合五位大师的推演，如果我只能做一件事来最大化胜率，应该是什么？为什么？">🎯 只做一件事，做什么？</div>
+          <div class="inquiry-chip" data-query="五位大师之间最大的分歧点是什么？我该如何在两种对立策略之间做出取舍？">⚖️ 大师分歧如何取舍？</div>
+          <div class="inquiry-chip" data-query="结合上述推演，我接下来30天内的行动路线图应该怎么排？请给出可执行的时间节点。">🗓️ 30天行动路线图</div>
+          <div class="inquiry-chip" data-query="站在最挑剔的反对者角度，上述结论最可能在哪里出错？我该提前布防什么？">🛡️ 结论最可能错在哪？</div>
+        </div>
+        <div class="inquiry-chat-list" id="inquiryChatList">
+          <div class="inquiry-empty">💬 尚无追问记录。点击上方快捷问题，或在下方输入框中围绕本次推演继续向 AI 深度追问。</div>
+        </div>
+        <div class="inquiry-input-box">
+          <textarea class="inquiry-textarea" id="inquiryInput" rows="1" placeholder="围绕上方五路推演与综合大盘，继续向 AI 发起深度追问..."></textarea>
+          <button class="inquiry-send-btn" id="btnSendInquiry">
+            <span>发送追问</span>
+            <span>↵</span>
+          </button>
+        </div>
+        <div class="inquiry-input-hint">按 <kbd>Enter</kbd> 直接提交发送 · <kbd>Shift</kbd> + <kbd>Enter</kbd> 换行</div>
+      </div>
+    </section>
   </main>
 
   <!-- 历史记录模态框 -->
@@ -1138,114 +1406,217 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-function renderMarkdown(md) {
-  if (!md) return '';
-  let text = String(md).replace(/\r\n/g, '\n');
-  const codeBlocks = [];
+// ===========================================================================
+// 完整版 Markdown 渲染引擎
+// 支持：代码块 / 表格 / 1~6 级标题 / 分隔线 / 引用 / 有序无序及嵌套列表 /
+//       任务清单 / 加粗斜体删除线 / 行内代码 / 超链接
+// 约定：块级元素输出裸标签（由 .md-rendered 后代选择器着色），表格用 .table-wrap + .md-table
+// ===========================================================================
 
-  text = text.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
-    const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
-    codeBlocks.push(`<pre><code class="${lang}">${escapeHtml(code.trim())}</code></pre>`);
-    return placeholder;
+// 行内元素渲染（入参必须是已 HTML 转义的文本，避免二次转义）
+function formatInline(escaped) {
+  if (escaped === null || escaped === undefined) return '';
+  let s = String(escaped);
+  const codes = [];
+
+  // 先用哨兵保护行内代码，防止其中的 * _ 被误判为强调符号
+  s = s.replace(/`([^`]+)`/g, (m, c) => {
+    codes.push(c);
+    return '\u0001C' + (codes.length - 1) + '\u0001';
   });
 
-  const lines = text.split('\n');
-  const out = [];
-  let inUl = false;
-  let inOl = false;
-  let inQuote = false;
+  // 超链接 [文本](地址)
+  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,
+    '<a class="md-link" href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 
-  const closeLists = () => {
-    if (inUl) { out.push('</ul>'); inUl = false; }
-    if (inOl) { out.push('</ol>'); inOl = false; }
-    if (inQuote) { out.push('</blockquote>'); inQuote = false; }
-  };
+  // 加粗
+  s = s.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/__([\s\S]+?)__/g, '<strong>$1</strong>');
 
-  for (let i = 0; i < lines.length; i++) {
-    const rawLine = lines[i];
-    const trimmed = rawLine.trim();
+  // 删除线
+  s = s.replace(/~~([\s\S]+?)~~/g, '<del class="md-del">$1</del>');
 
-    if (!trimmed) {
-      closeLists();
-      continue;
-    }
+  // 斜体（避免误伤 ** 与 snake_case）
+  s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+  s = s.replace(/(^|[^_\w])_([^_\n]+)_/g, '$1<em>$2</em>');
 
-    if (rawLine.startsWith('__CODE_BLOCK_')) {
-      closeLists();
-      out.push(rawLine);
-      continue;
-    }
-
-    const hMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
-    if (hMatch) {
-      closeLists();
-      const level = hMatch[1].length;
-      out.push(`<h${level}>${formatInline(hMatch[2])}</h${level}>`);
-      continue;
-    }
-
-    if (/^[-*_]{3,}$/.test(trimmed)) {
-      closeLists();
-      out.push('<hr/>');
-      continue;
-    }
-
-    const qMatch = trimmed.match(/^>\s*(.*)$/);
-    if (qMatch) {
-      if (inUl || inOl) closeLists();
-      if (!inQuote) {
-        out.push('<blockquote>');
-        inQuote = true;
-      }
-      out.push(`<p>${formatInline(qMatch[1])}</p>`);
-      continue;
-    } else if (inQuote) {
-      out.push('</blockquote>');
-      inQuote = false;
-    }
-
-    const ulMatch = trimmed.match(/^[-*+]\s+(.*)$/);
-    if (ulMatch) {
-      if (inOl || inQuote) closeLists();
-      if (!inUl) {
-        out.push('<ul>');
-        inUl = true;
-      }
-      out.push(`<li>${formatInline(ulMatch[1])}</li>`);
-      continue;
-    }
-
-    const olMatch = trimmed.match(/^(\d+)\.\s+(.*)$/);
-    if (olMatch) {
-      if (inUl || inQuote) closeLists();
-      if (!inOl) {
-        out.push('<ol>');
-        inOl = true;
-      }
-      out.push(`<li>${formatInline(olMatch[2])}</li>`);
-      continue;
-    }
-
-    closeLists();
-    out.push(`<p>${formatInline(trimmed)}</p>`);
-  }
-
-  closeLists();
-
-  let renderedHtml = out.join('');
-  codeBlocks.forEach((block, idx) => {
-    renderedHtml = renderedHtml.replace(`__CODE_BLOCK_${idx}__`, block);
-  });
-
-  return renderedHtml;
+  // 还原行内代码
+  s = s.replace(/\u0001C(\d+)\u0001/g, (m, n) => '<code>' + codes[Number(n)] + '</code>');
+  return s;
 }
 
-function formatInline(str) {
-  if (!str) return '';
-  return escapeHtml(str)
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+// 拆分表格行：去掉首尾竖线后按 | 切分
+function splitTableRow(row) {
+  return row.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|');
+}
+
+function renderMarkdown(md) {
+  if (md === null || md === undefined || md === '') return '';
+  let src = String(md).replace(/\r\n?/g, '\n');
+  if (!src.trim()) return '';
+
+  // ---- 1) 先抽出围栏代码块，用哨兵占位，避免逐行解析破坏其内容 ----
+  const codeStore = [];
+  const stash = (html) => {
+    codeStore.push(html);
+    return '\u0000B' + (codeStore.length - 1) + '\u0000';
+  };
+  // 已闭合的代码块
+  src = src.replace(/```[ \t]*[a-zA-Z0-9#+\-]*[ \t]*\n([\s\S]*?)```/g, (m, code) =>
+    stash('<pre><code>' + escapeHtml(code.replace(/\n$/, '')) + '</code></pre>'));
+  // 流式输出中尚未闭合的代码块
+  src = src.replace(/```[ \t]*[a-zA-Z0-9#+\-]*[ \t]*\n?([\s\S]*)$/, (m, code) =>
+    stash('<pre><code>' + escapeHtml(code) + '</code></pre>'));
+
+  const lines = src.split('\n');
+  const out = [];
+  const listStack = [];   // 列表层级栈 [{type:'ul'|'ol', indent:N}]
+  let i = 0;
+
+  // 惰性闭合：<li> 保持打开，直到同级下一项或退出层级时才补 </li>，
+  // 使嵌套子列表正确落在父 <li> 内部，生成合法 HTML。
+  const closeAllLists = () => {
+    while (listStack.length) {
+      out.push('</li>');
+      out.push(listStack.pop().type === 'ol' ? '</ol>' : '</ul>');
+    }
+  };
+
+  while (i < lines.length) {
+    const rawLine = lines[i];
+    const line = rawLine.replace(/\s+$/, '');
+    const trimmed = line.trim();
+
+    // 空行
+    if (!trimmed) { closeAllLists(); i++; continue; }
+
+    // 代码块占位符
+    if (/^\u0000B\d+\u0000$/.test(trimmed)) {
+      closeAllLists();
+      out.push(trimmed);
+      i++;
+      continue;
+    }
+
+    // 分隔线 --- *** ___
+    if (/^([-*_])\s*\1\s*\1[\s\-*_]*$/.test(trimmed)) {
+      closeAllLists();
+      out.push('<hr/>');
+      i++;
+      continue;
+    }
+
+    // 标题 # ~ ######
+    const hMatch = trimmed.match(/^(#{1,6})\s+(.*?)\s*#*$/);
+    if (hMatch) {
+      closeAllLists();
+      const lv = hMatch[1].length;
+      out.push('<h' + lv + '>' + formatInline(escapeHtml(hMatch[2])) + '</h' + lv + '>');
+      i++;
+      continue;
+    }
+
+    // 表格：当前行含 |，且下一行是分隔行
+    if (trimmed.indexOf('|') !== -1 && (i + 1) < lines.length &&
+        /^\s*\|?[\s:|\-]+\|[\s:|\-]*$/.test(lines[i + 1]) && /\-/.test(lines[i + 1])) {
+      closeAllLists();
+      const headers = splitTableRow(trimmed);
+      const aligns = splitTableRow(lines[i + 1]).map((c) => {
+        const t = c.trim();
+        const left = t.charAt(0) === ':';
+        const right = t.charAt(t.length - 1) === ':';
+        return (left && right) ? 'center' : (right ? 'right' : (left ? 'left' : ''));
+      });
+      i += 2;
+      const bodyRows = [];
+      while (i < lines.length && lines[i].trim() && lines[i].indexOf('|') !== -1) {
+        bodyRows.push(splitTableRow(lines[i].trim()));
+        i++;
+      }
+      let tbl = '<div class="table-wrap"><table class="md-table"><thead><tr>';
+      headers.forEach((c, ci) => {
+        tbl += '<th' + (aligns[ci] ? ' style="text-align:' + aligns[ci] + '"' : '') + '>' +
+               formatInline(escapeHtml(c.trim())) + '</th>';
+      });
+      tbl += '</tr></thead><tbody>';
+      bodyRows.forEach((r) => {
+        tbl += '<tr>';
+        for (let ci = 0; ci < headers.length; ci++) {
+          tbl += '<td' + (aligns[ci] ? ' style="text-align:' + aligns[ci] + '"' : '') + '>' +
+                 formatInline(escapeHtml((r[ci] || '').trim())) + '</td>';
+        }
+        tbl += '</tr>';
+      });
+      tbl += '</tbody></table></div>';
+      out.push(tbl);
+      continue;
+    }
+
+    // 引用块 > （连续多行合并为同一引用块）
+    if (/^>\s?/.test(trimmed)) {
+      closeAllLists();
+      const quoted = [];
+      while (i < lines.length && /^\s*>\s?/.test(lines[i])) {
+        quoted.push(lines[i].replace(/^\s*>\s?/, ''));
+        i++;
+      }
+      out.push('<blockquote><p>' +
+               formatInline(escapeHtml(quoted.join('\n'))).replace(/\n/g, '<br>') +
+               '</p></blockquote>');
+      continue;
+    }
+
+    // 列表（支持缩进嵌套、有序无序混排、任务清单）
+    const liMatch = rawLine.match(/^(\s*)([-+*]|\d+[.)])\s+(.*)$/);
+    if (liMatch) {
+      const indent = liMatch[1].replace(/\t/g, '    ').length;
+      const type = /^\d/.test(liMatch[2]) ? 'ol' : 'ul';
+
+      // 退出更深的层级
+      while (listStack.length && listStack[listStack.length - 1].indent > indent) {
+        out.push('</li>');
+        out.push(listStack.pop().type === 'ol' ? '</ol>' : '</ul>');
+      }
+      // 同层级但类型改变 → 换一个新列表
+      if (listStack.length && listStack[listStack.length - 1].indent === indent &&
+          listStack[listStack.length - 1].type !== type) {
+        out.push('</li>');
+        out.push(listStack.pop().type === 'ol' ? '</ol>' : '</ul>');
+      }
+      // 同层级同类型 → 先闭合上一项
+      if (listStack.length && listStack[listStack.length - 1].indent === indent) {
+        out.push('</li>');
+      }
+      // 进入更深层级 → 开启新列表（嵌在上一项内部）
+      if (!listStack.length || listStack[listStack.length - 1].indent < indent) {
+        listStack.push({ type: type, indent: indent });
+        out.push(type === 'ol' ? '<ol>' : '<ul>');
+      }
+
+      let content = liMatch[3];
+      let checkbox = '';
+      const cbMatch = content.match(/^\[([ xX])\]\s*(.*)$/);
+      if (cbMatch) {
+        checkbox = '<span class="md-check">' + (/[xX]/.test(cbMatch[1]) ? '☑' : '☐') + '</span> ';
+        content = cbMatch[2];
+      }
+      out.push('<li>' + checkbox + formatInline(escapeHtml(content)));
+      i++;
+      continue;
+    }
+
+    // 普通段落
+    closeAllLists();
+    out.push('<p>' + formatInline(escapeHtml(line)) + '</p>');
+    i++;
+  }
+
+  closeAllLists();
+
+  // ---- 2) 还原代码块 ----
+  let html = out.join('');
+  html = html.replace(/\u0000B(\d+)\u0000/g, (m, n) => codeStore[Number(n)] || '');
+  return html;
 }
 
 
@@ -1431,6 +1802,43 @@ function formatInline(str) {
         }
       },
 
+      // 多轮对话接口（供「穿透追问 · 深度研讨室」使用，需携带完整 messages 上下文）
+      async chatMessages(messages, onChunk) {
+        callCounter++;
+        const uniqueCallId = "call-" + Date.now() + "-" + callCounter;
+
+        if (window.cherry && window.cherry.ai && window.cherry.ai.chat) {
+          try {
+            return await window.cherry.ai.chat(
+              { messages: messages, reasoning: "on" },
+              {
+                callId: uniqueCallId,
+                onChunk: (chunk) => { if (onChunk) onChunk(chunk); }
+              }
+            );
+          } catch (err) {
+            console.error("Cherry AI chat error:", err);
+            let errMsg = err.message || err.name || JSON.stringify(err);
+            if (err.name === "Unavailable") {
+              errMsg = "当前 Cherry Studio 未配置默认大模型，或选定模型不可用。请在 Cherry Studio 设置中确认已配置默认模型。";
+            } else if (err.name === "RateLimited") {
+              errMsg = "调用频率或并发超过限制，请稍候重试。";
+            } else if (err.name === "PermissionDenied") {
+              errMsg = "小程序缺少 ai.chat 权限授权。";
+            }
+            throw new Error(errMsg);
+          }
+        } else {
+          // 离线演练轨：输出一段结构化 Markdown，便于本地预览排版效果
+          const mock = "### 🎩 参谋长研判\n\n**核心结论**：先守住现金流底盘，再谈增长探索。\n\n#### 一、关键判断\n- **风险敞口**：当前下行风险偏高，不宜加杠杆\n- **机会窗口**：存在低成本验证的第三条路径\n\n#### 二、策略对照\n\n| 维度 | 曾氏防线 | 芒格逆向 | 建议 |\n|:---|:---|:---|---:|\n| 风险 | 先立于不败 | 先想如何搞砸 | 设硬性止损线 |\n| 节奏 | 扎硬寨打呆仗 | 守住能力圈 | 小步快跑 |\n\n#### 三、行动清单\n- [x] 明确止损边界与最大可承受损失\n- [ ] 设计最小验证闭环并设定观察期\n\n> **箴言**：不要用战术上的勤奋，掩盖战略上的懒惰。\n\n*（当前为离线演练环境，接入 Cherry Studio 后将给出真实推演。）*";
+          for (let i = 0; i < mock.length; i += 3) {
+            await new Promise(r => setTimeout(r, 12));
+            if (onChunk) onChunk(mock.slice(i, i + 3));
+          }
+          return { ok: true };
+        }
+      },
+
       // 持久化存储 (兼容官方规范返回值 { value: string | null })
       async saveHistory(key, data) {
         const serialized = JSON.stringify(data);
@@ -1575,8 +1983,12 @@ function formatInline(str) {
         timestamp: new Date().toLocaleString(),
         issue: issue,
         advisors: {},
-        summary: ""
+        summary: "",
+        inquiries: []
       };
+
+      // 重置上一场的追问记录，准备迎接本次推演后的研讨
+      renderInquiryList();
 
       // 重置各卡片状态
       activeKeys.forEach(k => {
@@ -1782,10 +2194,16 @@ function formatInline(str) {
       document.getElementById('detailModal').classList.remove('open');
     });
 
-    // 历史归档管理
+    // 历史归档管理（同一场推演的追问会就地更新原档案，不产生重复条目）
     async function saveCurrentToHistory(record) {
+      if (!record || !record.issue) return;
       let list = (await CherryBridge.getHistory('dada_brain_trust_history')) || [];
-      list.unshift(record);
+      const idx = list.findIndex(x => x && x.issue === record.issue && x.timestamp === record.timestamp);
+      if (idx >= 0) {
+        list[idx] = record;                  // 就地更新（追问记录随之落盘）
+      } else {
+        list.unshift(record);                // 新推演则插入队首
+      }
       if (list.length > 20) list = list.slice(0, 20); // 保留最新20条
       await CherryBridge.saveHistory('dada_brain_trust_history', list);
     }
@@ -1823,31 +2241,235 @@ function formatInline(str) {
 
     function loadHistoryItem(item) {
       currentResults = item;
+
+      // 保证 inquiries 字段存在，便于追问模块直接续写
+      if (!Array.isArray(currentResults.inquiries)) currentResults.inquiries = [];
+
       document.getElementById('issueInput').value = item.issue;
+
+      // 先复位全部顾问卡片，避免上一场的残留内容混淆
+      Object.keys(ADVISORS).forEach(k => {
+        const cap = capitalize(k);
+        const out = document.getElementById('output' + cap);
+        const card = document.querySelector('.advisor-card[data-key="' + k + '"]');
+        if (out) {
+          out.textContent = '';
+          out.classList.remove('has-content', 'md-rendered');
+        }
+        if (card) {
+          card.classList.remove('running', 'done');
+          card.removeAttribute('data-raw-text');
+        }
+        const dot = document.getElementById('dot' + cap);
+        const st = document.getElementById('status' + cap);
+        const conf = document.getElementById('conf' + cap);
+        if (dot) dot.className = 'dot';
+        if (st) st.textContent = '席位待命';
+        if (conf) { conf.textContent = '-'; conf.className = 'badge-confidence'; }
+      });
+
+      // 渲染各位顾问的归档结论（Markdown 渲染，而非纯文本）
       for (const [k, text] of Object.entries(item.advisors || {})) {
         const cap = capitalize(k);
         const out = document.getElementById('output' + cap);
         if (out) {
-          out.textContent = text;
-          out.classList.add('has-content');
-          document.getElementById('status' + cap).textContent = '已归档';
-          document.getElementById('dot' + cap).className = 'dot done';
+          out.classList.add('has-content', 'md-rendered');
+          out.innerHTML = renderMarkdown(text);
+          const card = document.querySelector('.advisor-card[data-key="' + k + '"]');
+          if (card) {
+            card.setAttribute('data-raw-text', text);
+            card.classList.add('done');
+          }
+          const st = document.getElementById('status' + cap);
+          const dot = document.getElementById('dot' + cap);
+          if (st) st.textContent = '已归档';
+          if (dot) dot.className = 'dot done';
         }
       }
-      if (item.summary) {
-        document.getElementById('outputSummary').textContent = item.summary;
+
+      // 渲染综合大盘
+      const summaryOut = document.getElementById('outputSummary');
+      if (item.summary && summaryOut) {
+        summaryOut.classList.add('md-rendered');
+        summaryOut.innerHTML = renderMarkdown(item.summary);
         document.getElementById('statusSummary').textContent = '已归档';
         document.getElementById('dotSummary').className = 'dot done';
       }
+
+      // 渲染该档案下的历史追问记录
+      renderInquiryList();
     }
 
     function capitalize(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    function escapeHtml(str) {
-      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    // =======================================================================
+    // 穿透追问 · 深度研讨室
+    // 将「议题 + 五路大师推演 + 综合大盘」整体注入上下文，支持持续多轮追问
+    // =======================================================================
+    let inquiryBusy = false;
+
+    function buildInquirySystemPrompt(rec) {
+      if (!rec || !rec.issue) {
+        return "你是资深战略顾问，请基于用户议题给出深度、具体、可执行的回答，并使用 Markdown 排版。";
+      }
+
+      const parts = [];
+      parts.push("你是「达达智囊团」的首席战略参谋长，刚刚主持完下面这场多大师圆桌推演。");
+      parts.push("");
+      parts.push("==================== 本次推演全景 ====================");
+      parts.push("【用户议题】");
+      parts.push(String(rec.issue).trim());
+      parts.push("");
+
+      const advisors = rec.advisors || {};
+      Object.keys(advisors).forEach(k => {
+        const name = (ADVISORS[k] && ADVISORS[k].name) || k;
+        const text = String(advisors[k] || "").trim();
+        if (!text) return;
+        parts.push("──── 顾问【" + name + "】的独立推演 ────");
+        parts.push(text);
+        parts.push("");
+      });
+
+      if (rec.summary && String(rec.summary).trim()) {
+        parts.push("──── 调度中心 · 综合裁定大盘 ────");
+        parts.push(String(rec.summary).trim());
+        parts.push("");
+      }
+
+      parts.push("====================================================");
+      parts.push("");
+      parts.push("现在，用户将围绕上述议题与各位大师的推演结论，向你展开持续的定向追问与深度研讨。");
+      parts.push("");
+      parts.push("【回复准则】");
+      parts.push("1. 深度扎根：严格立足上述推演内容作答；引用某位大师观点时请点名，不要泛泛而谈。");
+      parts.push("2. 有判断力：敢于给出明确倾向与取舍建议，不要模棱两可、不要只罗列而不下结论。");
+      parts.push("3. 结构清晰：使用 Markdown 排版（标题、列表，必要时用表格做对比），便于决策者快速吸收。");
+      parts.push("4. 篇幅适度：直击要害，避免复述前文已经讲过的内容。");
+      return parts.join("\n");
     }
+
+    function renderInquiryList() {
+      const listEl = document.getElementById('inquiryChatList');
+      if (!listEl) return;
+
+      const items = Array.isArray(currentResults.inquiries) ? currentResults.inquiries : [];
+      if (!items.length) {
+        listEl.innerHTML = '<div class="inquiry-empty">💬 尚无追问记录。点击上方快捷问题，或在下方输入框中围绕本次推演继续向 AI 深度追问。</div>';
+        return;
+      }
+
+      listEl.innerHTML = items.map(m => {
+        const isUser = m.role === 'user';
+        const who = isUser ? '👤 我的追问' : '🎩 智囊团 · 参谋长';
+        const content = renderMarkdown(m.content);
+        return '<div class="inquiry-msg ' + (isUser ? 'user' : 'assistant') + '">' +
+                 '<div class="inquiry-bubble">' +
+                   '<div class="inquiry-bubble-header">' + who + '</div>' +
+                   '<div class="md-rendered">' + content + '</div>' +
+                 '</div>' +
+               '</div>';
+      }).join('');
+
+      listEl.scrollTop = listEl.scrollHeight;
+    }
+
+    async function sendInquiry(text) {
+      const q = (text || '').trim();
+      if (!q) return;
+      if (!currentResults || !currentResults.issue) {
+        alert('请先完成一次智囊团推演，再展开追问研讨。');
+        return;
+      }
+      if (inquiryBusy) return;
+
+      if (!Array.isArray(currentResults.inquiries)) currentResults.inquiries = [];
+
+      // 压入用户提问 + 助手占位
+      currentResults.inquiries.push({ role: 'user', content: q, time: Date.now() });
+      const assistantMsg = { role: 'assistant', content: '', time: Date.now() };
+      currentResults.inquiries.push(assistantMsg);
+
+      const inputEl = document.getElementById('inquiryInput');
+      if (inputEl) inputEl.value = '';
+      renderInquiryList();
+
+      const listEl = document.getElementById('inquiryChatList');
+      const lastEl = listEl ? listEl.lastElementChild : null;
+      const bodyEl = lastEl ? lastEl.querySelector('.md-rendered') : null;
+      if (bodyEl) bodyEl.innerHTML = '<span class="inquiry-typing"><i></i><i></i><i></i></span>';
+
+      const sendBtn = document.getElementById('btnSendInquiry');
+      if (sendBtn) sendBtn.disabled = true;
+      inquiryBusy = true;
+
+      // 组装多轮上下文：system(推演全景) + 最近 10 条有效历史
+      const messages = [{ role: 'system', content: buildInquirySystemPrompt(currentResults) }];
+      currentResults.inquiries.slice(0, -1).slice(-10).forEach(m => {
+        const c = (m && m.content) ? String(m.content).trim() : '';
+        if (!c) return;                                   // 跳过空消息，避免部分模型接口报 400
+        messages.push({ role: m.role === 'user' ? 'user' : 'assistant', content: c });
+      });
+
+      let fullReply = '';
+      try {
+        await CherryBridge.chatMessages(messages, (chunk) => {
+          fullReply += chunk;
+          assistantMsg.content = fullReply;
+          if (bodyEl) bodyEl.innerHTML = renderMarkdown(fullReply);
+          if (listEl) listEl.scrollTop = listEl.scrollHeight;
+        });
+
+        if (!fullReply) {
+          assistantMsg.content = '（本次未收到模型返回内容，请确认 Cherry Studio 已配置好默认模型后重试）';
+          if (bodyEl) bodyEl.innerHTML = renderMarkdown(assistantMsg.content);
+        }
+      } catch (err) {
+        assistantMsg.content = '⚠️ 追问研讨遇到异常：' + ((err && err.message) ? err.message : String(err));
+        if (bodyEl) bodyEl.innerHTML = renderMarkdown(assistantMsg.content);
+      } finally {
+        inquiryBusy = false;
+        if (sendBtn) sendBtn.disabled = false;
+        renderInquiryList();
+        // 追问记录随本次推演档案一并落盘
+        try { await saveCurrentToHistory(currentResults); } catch (e) { console.warn(e); }
+      }
+    }
+
+    // ---- 事件绑定 ----
+    document.getElementById('btnSendInquiry')?.addEventListener('click', () => {
+      const inputEl = document.getElementById('inquiryInput');
+      if (inputEl) sendInquiry(inputEl.value);
+    });
+
+    document.getElementById('inquiryInput')?.addEventListener('keydown', (e) => {
+      // isComposing：中文输入法拼音候选阶段按回车是"选字"，不能当作发送
+      if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+        e.preventDefault();
+        sendInquiry(e.target.value);
+      }
+    });
+
+    document.getElementById('btnClearInquiry')?.addEventListener('click', async () => {
+      if (!currentResults || !currentResults.issue) return;
+      if (!Array.isArray(currentResults.inquiries) || !currentResults.inquiries.length) return;
+      currentResults.inquiries = [];
+      renderInquiryList();
+      try { await saveCurrentToHistory(currentResults); } catch (e) { console.warn(e); }
+    });
+
+    document.querySelectorAll('.inquiry-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const q = chip.getAttribute('data-query');
+        if (q) {
+          const inputEl = document.getElementById('inquiryInput');
+          if (inputEl) inputEl.value = q;
+          sendInquiry(q);
+        }
+      });
+    });
   </script>
 </body>
 </html>
